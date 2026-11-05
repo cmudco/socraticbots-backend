@@ -1,0 +1,10 @@
+# Copy to docker-compose.override.yml for local development; Compose loads it automatically.
+# DEBUG=True makes the web container run Django's dev server, and the mount makes it reload on edits.
+# Adding a package to requirements.txt still needs `docker compose up --build`.
+
+services:
+  web:
+    environment:
+      DEBUG: "True"
+    volumes:
+      - .:/app

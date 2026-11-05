@@ -1,0 +1,63 @@
+{
+  "browserEvent": {
+    "sequence": 0,
+    "elapsedMs": 1200,
+    "stage": "microphone",
+    "kind": "microphone_error",
+    "online": true,
+    "errorName": "NotAllowedError"
+  },
+  "statusReserved": {
+    "status": "reserved",
+    "endedReason": null
+  },
+  "statusCompleted": {
+    "status": "completed",
+    "endedReason": "manual_end"
+  },
+  "statusCancelled": {
+    "status": "cancelled",
+    "endedReason": "page_hidden_exit"
+  },
+  "detail": {
+    "id": 91,
+    "agent": 37,
+    "agentName": "Contract exam",
+    "agentVoiceProvider": "mistral_pipecat",
+    "user": 2,
+    "userEmail": "student@example.test",
+    "elevenlabsConversationId": "contract-session",
+    "providerConversationId": "contract-session",
+    "startedAt": "2026-09-20T00:00:00Z",
+    "endedAt": "2026-09-20T00:00:10Z",
+    "durationSeconds": 10,
+    "status": "cancelled",
+    "transcript": [
+      {
+        "role": "user",
+        "message": "Test answer",
+        "timeInCallSecs": 2.5
+      }
+    ],
+    "createdAt": "2026-09-20T00:00:00Z",
+    "endedReason": "page_hidden_exit",
+    "sessionActivity": "conversation",
+    "browserDiagnostics": []
+  },
+  "list": [
+    {
+      "id": 91,
+      "agent": 37,
+      "agentName": "Contract exam",
+      "agentVoiceProvider": "mistral_pipecat",
+      "userEmail": "student@example.test",
+      "startedAt": "2026-09-20T00:00:00Z",
+      "endedAt": "2026-09-20T00:00:10Z",
+      "durationSeconds": 10,
+      "status": "cancelled",
+      "endedReason": "page_hidden_exit",
+      "sessionActivity": "conversation",
+      "browserDiagnostics": []
+    }
+  ]
+}

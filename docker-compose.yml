@@ -1,0 +1,82 @@
+services:
+
+  web:
+    build: .
+    container_name: socraticbots-web
+    command: web
+    init: true
+    env_file:
+      - .env
+    environment:
+      DEBUG: ${DOCKER_DEBUG:-False}
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: ${DB_NAME:-socraticbots}
+      DB_USER: ${DB_USER:-socraticbots}
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      # 127.0.0.1 inside the container is the container itself; reach DARE on the host instead.
+      DARE_BACKEND_URL: ${DOCKER_DARE_BACKEND_URL:-http://host.docker.internal:8000}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${WEB_PORT:-8001}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/health/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+
+  # Expires abandoned voice-session startups. Needed only with VOICE_RUNTIME_STARTUP_CLAIMS_ENABLED=true.
+  scheduler:
+    build: .
+    container_name: socraticbots-scheduler
+    command: scheduler
+    init: true
+    env_file:
+      - .env
+    environment:
+      DEBUG: ${DOCKER_DEBUG:-False}
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: ${DB_NAME:-socraticbots}
+      DB_USER: ${DB_USER:-socraticbots}
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      DARE_BACKEND_URL: ${DOCKER_DARE_BACKEND_URL:-http://host.docker.internal:8000}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      disable: true
+    depends_on:
+      web:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles:
+      - voice
+
+  db:
+    image: postgres:16
+    container_name: socraticbots-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME:-socraticbots}
+      POSTGRES_USER: ${DB_USER:-socraticbots}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-socraticbots} -d ${DB_NAME:-socraticbots}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    name: socraticbots_postgres_data

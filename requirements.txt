@@ -1,0 +1,16 @@
+Django~=5.1.7
+psycopg2-binary~=2.9.10
+python-dotenv~=1.0.1
+djangorestframework~=3.15.2
+djangorestframework-camel-case~=1.4.2
+django-cors-headers~=4.7.0
+whitenoise~=6.9.0
+gunicorn~=23.0.0
+djangorestframework-simplejwt~=5.5.0
+PyJWT~=2.10.1
+drf-nested-routers~=0.94.1
+requests~=2.31.0
+httpx~=0.28.1
+weasyprint~=62.3
+pydyf<0.12.0
+sentry-sdk~=2.26.1
