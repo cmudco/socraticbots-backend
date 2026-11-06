@@ -141,6 +141,7 @@ def voice_runtime_session_context(request, session_id: str) -> Response:
         "language": agent.language or "en",
         "voice_id": agent.voice_id or "",
         "eagerness": agent.voice_eagerness,
+        "turn_mode": agent.voice_turn_mode,
         "turn_timeout_secs": agent.voice_turn_timeout_secs,
         "llm_model": agent.llm_model or "",
     })

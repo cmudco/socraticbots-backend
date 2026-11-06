@@ -102,7 +102,7 @@ class VoiceAgentSerializer(serializers.ModelSerializer):
             'elevenlabs_agent_id', 'voice_provider', 'voice_id',
             'language', 'system_prompt',
             'first_message', 'temperature', 'max_duration_seconds',
-            'voice_eagerness', 'voice_turn_timeout_secs', 'llm_model',
+            'voice_eagerness', 'voice_turn_mode', 'voice_turn_timeout_secs', 'llm_model',
             'exam_title', 'exam_instructions', 'default_max_attempts', 'status',
             'conversation_config', 'conversation_count',
             'access_code_for_admin', 'has_user_access', 'permissions',
@@ -182,7 +182,7 @@ class VoiceAgentCreateSerializer(serializers.ModelSerializer):
         fields = [
             'name', 'description', 'voice_id', 'system_prompt',
             'first_message', 'temperature', 'max_duration_seconds',
-            'voice_eagerness', 'voice_turn_timeout_secs', 'llm_model',
+            'voice_eagerness', 'voice_turn_mode', 'voice_turn_timeout_secs', 'llm_model',
             'exam_title', 'exam_instructions', 'default_max_attempts',
             'status', 'conversation_config',
             'access_code', 'team', 'voice_provider', 'language',
@@ -208,7 +208,7 @@ class VoiceAgentUpdateSerializer(serializers.ModelSerializer):
         fields = [
             'name', 'description', 'voice_id', 'system_prompt',
             'first_message', 'temperature', 'max_duration_seconds',
-            'voice_eagerness', 'voice_turn_timeout_secs', 'llm_model',
+            'voice_eagerness', 'voice_turn_mode', 'voice_turn_timeout_secs', 'llm_model',
             'exam_title', 'exam_instructions', 'default_max_attempts',
             'status', 'conversation_config',
             'access_code', 'team', 'voice_provider', 'language',

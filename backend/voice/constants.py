@@ -31,6 +31,12 @@ class VoiceProvider(models.TextChoices):
     MISTRAL_VOICE = 'mistral_pipecat', 'Mistral Voice'
 
 
+class VoiceTurnMode(models.TextChoices):
+    """Who decides the student has finished: the runtime or the student's button."""
+    AUTO = 'auto', 'Automatic'
+    PUSH_TO_TALK = 'push_to_talk', 'Push to talk'
+
+
 class VoiceEagerness(models.TextChoices):
     """How quickly the voice agent jumps in after the student pauses.
 

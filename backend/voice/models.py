@@ -10,7 +10,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from voice.constants import (
     VoiceAgentStatus, ConversationStatus,
     VoiceTeamRole, VoiceAgentRole, VoiceProvider,
-    VoiceEagerness, DEFAULT_TEMPERATURE, DEFAULT_MAX_DURATION,
+    VoiceEagerness, VoiceTurnMode, DEFAULT_TEMPERATURE, DEFAULT_MAX_DURATION,
     DEFAULT_VOICE_TURN_TIMEOUT_SECS,
 )
 
@@ -128,6 +128,12 @@ class VoiceAgent(models.Model):
         choices=VoiceEagerness.choices,
         default=VoiceEagerness.NORMAL,
         help_text="How quickly the agent jumps in after the student pauses"
+    )
+    voice_turn_mode = models.CharField(
+        max_length=20,
+        choices=VoiceTurnMode.choices,
+        default=VoiceTurnMode.AUTO,
+        help_text="How the student hands the turn back to the agent"
     )
     voice_turn_timeout_secs = models.PositiveIntegerField(
         default=DEFAULT_VOICE_TURN_TIMEOUT_SECS,
