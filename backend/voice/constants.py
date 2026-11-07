@@ -85,6 +85,27 @@ VOICE_BRAIN_MODELS = [
 VOICE_BRAIN_MODEL_IDS = {m['id'] for m in VOICE_BRAIN_MODELS}
 
 
+# English Kokoro voices graded C or better in Kokoro's VOICES.md, best first per
+# group. The runtime keeps the same ids and ignores anything else in voice_id.
+KOKORO_VOICES = [
+    {'id': 'af_heart', 'label': 'Heart', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_bella', 'label': 'Bella', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_nicole', 'label': 'Nicole', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_aoede', 'label': 'Aoede', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_kore', 'label': 'Kore', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_sarah', 'label': 'Sarah', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_alloy', 'label': 'Alloy', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'af_nova', 'label': 'Nova', 'gender': 'Female', 'accent': 'American'},
+    {'id': 'bf_emma', 'label': 'Emma', 'gender': 'Female', 'accent': 'British'},
+    {'id': 'bf_isabella', 'label': 'Isabella', 'gender': 'Female', 'accent': 'British'},
+    {'id': 'am_fenrir', 'label': 'Fenrir', 'gender': 'Male', 'accent': 'American'},
+    {'id': 'am_michael', 'label': 'Michael', 'gender': 'Male', 'accent': 'American'},
+    {'id': 'am_puck', 'label': 'Puck', 'gender': 'Male', 'accent': 'American'},
+    {'id': 'bm_george', 'label': 'George', 'gender': 'Male', 'accent': 'British'},
+    {'id': 'bm_fable', 'label': 'Fable', 'gender': 'Male', 'accent': 'British'},
+]
+
+
 class VoiceTeamRole(models.TextChoices):
     """Team-level roles. Manager and Reviewer are active use cases;
     Admin is reserved for future Co-Admin capability."""

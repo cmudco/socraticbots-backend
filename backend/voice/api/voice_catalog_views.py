@@ -17,7 +17,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from voice.constants import VOICE_BRAIN_MODELS
+from voice.constants import KOKORO_VOICES, VOICE_BRAIN_MODELS
 
 logger = logging.getLogger(__name__)
 
@@ -92,3 +92,10 @@ def mistral_voices(request) -> Response:
 def brain_models(request) -> Response:
     """Return the brain (LLM) models a Mistral Voice agent can be configured with."""
     return Response({"models": VOICE_BRAIN_MODELS, "total": len(VOICE_BRAIN_MODELS)})
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def kokoro_voices(request) -> Response:
+    """Return the examiner voices a Mistral Voice agent can be configured with."""
+    return Response({"voices": KOKORO_VOICES, "total": len(KOKORO_VOICES)})
