@@ -47,8 +47,7 @@ Out of scope:
   your DARE backend and voice runtime. Anyone holding `DARE_INTERNAL_KEY` can call the internal
   budget, billing, and voice-callback endpoints.
 - Add your domains to `ALLOWED_HOSTS`, `CORS_ALLOWED_ORIGINS`, and `CSRF_TRUSTED_ORIGINS`. The
-  built-in lists in `backend/core/settings.py` also include localhost and the maintainers' hosted
-  instances; delete those entries in your deployment if you want a strict allowlist.
+  built-in lists in `backend/core/settings.py` only include localhost.
 - Set `ELEVENLABS_WEBHOOK_SECRET` if you use ElevenLabs. Without it every post-call webhook is
   rejected, so transcripts never arrive.
 - Keep the Django admin behind your reverse proxy's access controls, or on a private network.
