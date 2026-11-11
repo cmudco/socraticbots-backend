@@ -246,6 +246,7 @@ class VoiceAgentViewSet(viewsets.ModelViewSet):
             temperature=source.temperature,
             max_duration_seconds=source.max_duration_seconds,
             voice_eagerness=source.voice_eagerness,
+            voice_turn_mode=source.voice_turn_mode,
             voice_turn_timeout_secs=source.voice_turn_timeout_secs,
             llm_model=source.llm_model,
             conversation_config=copy.deepcopy(source.conversation_config),
