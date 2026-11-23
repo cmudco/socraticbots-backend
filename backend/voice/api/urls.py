@@ -9,7 +9,7 @@ from rest_framework.routers import DefaultRouter
 
 from .lab_views import start_stt_lab_session
 from .views import VoiceAgentViewSet, VoiceConversationViewSet
-from .voice_catalog_views import brain_models, mistral_voices
+from .voice_catalog_views import brain_models, kokoro_voices, mistral_voices
 from .webhook_views import elevenlabs_webhook
 from .runtime_views import (
     voice_runtime_conversation_ended,
@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('mistral-voices/', mistral_voices, name='mistral-voices'),
     path('brain-models/', brain_models, name='brain-models'),
+    path('kokoro-voices/', kokoro_voices, name='kokoro-voices'),
     path('lab/session/', start_stt_lab_session, name='voice-lab-session'),
     path('webhook/elevenlabs/', elevenlabs_webhook, name='elevenlabs-webhook'),
     path(
